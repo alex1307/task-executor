@@ -1,0 +1,249 @@
+{
+  "records": [
+    {
+      "word": "stifle",
+      "all": 4,
+      "error_cnt": 1,
+      "success_cnt": 3,
+      "timeout_cnt": 0,
+      "scores": [
+        74,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        16,
+        2,
+        2,
+        5
+      ],
+      "created_on": "2021-12-09T07:27:58.786282Z",
+      "updated_on": "2021-12-09T13:08:28.537365Z"
+    },
+    {
+      "word": "anger",
+      "all": 5,
+      "error_cnt": 2,
+      "success_cnt": 3,
+      "timeout_cnt": 0,
+      "scores": [
+        22,
+        100,
+        100,
+        100,
+        0
+      ],
+      "respond_times": [
+        2,
+        1,
+        2,
+        5,
+        4
+      ],
+      "created_on": "2021-12-09T07:26:50.036232Z",
+      "updated_on": "2021-12-09T17:49:24.545553Z"
+    },
+    {
+      "word": "sentiment",
+      "all": 1,
+      "error_cnt": 0,
+      "success_cnt": 1,
+      "timeout_cnt": 0,
+      "scores": [
+        100
+      ],
+      "respond_times": [
+        11
+      ],
+      "created_on": "2021-12-09T16:54:44.795498Z",
+      "updated_on": "2021-12-09T16:54:44.795517Z"
+    },
+    {
+      "word": "ineptitude",
+      "all": 1,
+      "error_cnt": 1,
+      "success_cnt": 0,
+      "timeout_cnt": 0,
+      "scores": [
+        0
+      ],
+      "respond_times": [
+        8
+      ],
+      "created_on": "2021-12-09T17:49:15.197110Z",
+      "updated_on": "2021-12-09T17:49:15.197128Z"
+    },
+    {
+      "word": "extinguish",
+      "all": 4,
+      "error_cnt": 0,
+      "success_cnt": 4,
+      "timeout_cnt": 0,
+      "scores": [
+        97,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        15,
+        5,
+        13,
+        6
+      ],
+      "created_on": "2021-12-09T07:27:38.153522Z",
+      "updated_on": "2021-12-09T13:08:51.026994Z"
+    },
+    {
+      "word": "ditch",
+      "all": 4,
+      "error_cnt": 0,
+      "success_cnt": 4,
+      "timeout_cnt": 0,
+      "scores": [
+        92,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        16,
+        2,
+        2,
+        3
+      ],
+      "created_on": "2021-12-09T07:29:14.977635Z",
+      "updated_on": "2021-12-09T13:07:54.054047Z"
+    },
+    {
+      "word": "stance",
+      "all": 1,
+      "error_cnt": 1,
+      "success_cnt": 0,
+      "timeout_cnt": 0,
+      "scores": [
+        16
+      ],
+      "respond_times": [
+        15
+      ],
+      "created_on": "2021-12-09T16:55:06.184651Z",
+      "updated_on": "2021-12-09T16:55:06.184673Z"
+    },
+    {
+      "word": "deteriorating",
+      "all": 1,
+      "error_cnt": 0,
+      "success_cnt": 1,
+      "timeout_cnt": 0,
+      "scores": [
+        84
+      ],
+      "respond_times": [
+        3
+      ],
+      "created_on": "2021-12-09T16:50:59.345457Z",
+      "updated_on": "2021-12-09T16:50:59.345475Z"
+    },
+    {
+      "word": "hold off",
+      "all": 1,
+      "error_cnt": 0,
+      "success_cnt": 1,
+      "timeout_cnt": 0,
+      "scores": [
+        100
+      ],
+      "respond_times": [
+        7
+      ],
+      "created_on": "2021-12-09T16:50:50.983025Z",
+      "updated_on": "2021-12-09T16:50:50.983045Z"
+    },
+    {
+      "word": "forge",
+      "all": 4,
+      "error_cnt": 0,
+      "success_cnt": 4,
+      "timeout_cnt": 0,
+      "scores": [
+        92,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        17,
+        2,
+        2,
+        8
+      ],
+      "created_on": "2021-12-09T07:28:20.971232Z",
+      "updated_on": "2021-12-09T13:08:40.841383Z"
+    },
+    {
+      "word": "scuttle",
+      "all": 4,
+      "error_cnt": 0,
+      "success_cnt": 4,
+      "timeout_cnt": 0,
+      "scores": [
+        94,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        23,
+        2,
+        3,
+        5
+      ],
+      "created_on": "2021-12-09T07:27:17.968181Z",
+      "updated_on": "2021-12-09T13:09:12.803982Z"
+    },
+    {
+      "word": "deteriorate",
+      "all": 4,
+      "error_cnt": 1,
+      "success_cnt": 3,
+      "timeout_cnt": 0,
+      "scores": [
+        75,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        4,
+        4,
+        3,
+        8
+      ],
+      "created_on": "2021-12-09T07:28:29.987893Z",
+      "updated_on": "2021-12-09T13:09:03.604372Z"
+    },
+    {
+      "word": "undertake",
+      "all": 4,
+      "error_cnt": 0,
+      "success_cnt": 4,
+      "timeout_cnt": 0,
+      "scores": [
+        97,
+        100,
+        100,
+        100
+      ],
+      "respond_times": [
+        19,
+        3,
+        2,
+        11
+      ],
+      "created_on": "2021-12-09T07:28:54.039292Z",
+      "updated_on": "2021-12-09T13:08:09.191888Z"
+    }
+  ]
+}

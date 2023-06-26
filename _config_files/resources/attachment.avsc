@@ -1,0 +1,11 @@
+    {
+        "type": "record",
+        "name":"attachment",
+        "namespace": "ayagasha.messages",
+        "fields":[
+            {"name": "message_id", "type": "string"},
+            {"name": "name", "type": "string"},
+            {"name": "file_type", "type": "string"},
+            {"name": "payload", "type": {"type": "array", "items":"int", "default": []}}
+        ]
+    }

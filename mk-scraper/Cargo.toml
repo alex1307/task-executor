@@ -1,0 +1,21 @@
+[package]
+name = "mk_scraper"
+version = "1.0.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+[lib]
+name = "mk_scraper"
+path = "src/lib.rs"
+
+[dependencies]
+common_libs = {path = "../common_libs"}
+log = { version = "*" }
+reqwest = { version = "*" }
+itertools = { version = "*" }
+scraper = { version = "*" }
+serde = { version = "*" }
+tokio = { version = "*" }
+serde_json = { version = "*" }
+futures = {version = "*"}
+crossbeam = {version = "*"}

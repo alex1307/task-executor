@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+	"starter",
+	"common_libs",
+	"mk-scraper",
+	"executor",
+	"http-srv"
+]

@@ -1,0 +1,18 @@
+[package]
+name = "executor"
+version = "1.0.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+
+[dependencies]
+common_libs = {path = "../common_libs"}
+mk_scraper = {path = "../mk-scraper"}
+log = { version = "*" }
+lazy_static = {version = "*"}
+crossbeam = {version = "*"}
+serde = { version = "*" }
+serde_json = { version = "*" }
+futures = {version = "*"}
+async-trait = {version = "*"}
+tokio = { version = "*", features = ["full"]}

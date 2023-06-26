@@ -1,0 +1,9 @@
+[package]
+name = "common_utils"
+version = "1.0.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+
+[dependencies]
+common_libs = {path = "../common_libs"}

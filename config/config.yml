@@ -1,0 +1,156 @@
+name: matkat
+version: "1.0"
+author: Alex T. <alexander.todorov@ayagasha.com>
+about: Self Teacher
+
+args:
+  
+  - json-dir: 
+      short: j
+      long: json-dir
+      value_name: DATA
+      help: Configure the download json folder.
+      default_value: data/en-en/json
+      takes_value: true
+        
+  - mp3-dir: 
+      short: m
+      long: mp3-dir
+      value_name: MP3
+      help: Configure the download mp3 folder.
+      default_value: data/en-en/mp3
+      takes_value: true
+
+  - dictionary: 
+      short: d
+      long: dictionary
+      value_name: DICTIONARY
+      help: Which dictionary should be used.
+      possible_values:
+        - cambridge
+        - collins
+        - oxford
+      default_value: cambridge
+      required: true
+      takes_value: true
+
+  - file: 
+      short: f
+      long: file
+      value_name: FILE
+      help: File path to the word list.
+      takes_value: true 
+      default_value: ""       
+
+  - iterations:
+      short: i
+      long: iterations
+      value_name: ITERATIONS
+      help: How many times each word will be played/pronounced.
+      takes_value: true
+      default_value: "10"
+  
+  - passing-score: 
+      short: s
+      long: passing-score
+      value_name: SCORE
+      help: 100 means full match. Less than 100 means how close you are.
+      takes_value: true
+      default_value: "85"
+
+  - timeout:
+      short: t
+      long: timeout
+      value_name: TIMEOUT
+      help: How long the program should wait for your response (in seconds).
+      takes_value: true
+      default_value: "30"     
+  
+  - max-entries:
+      short: q
+      long: maximum-questions
+      value_name: QUESTIONS
+      help: The maximum number of questions(word entries)
+      takes_value: true
+      default_value: "20"         
+
+subcommands:
+  
+  - download:    
+      about: Download all words from a list or from the terminal.
+      args:            
+        
+        - mode: 
+            short: i
+            long: input
+            value_name: INPUT
+            help: where downloaded data should be saved.
+            possible_values:
+              - file
+              - manual
+            default_value: manual
+            required: true
+            takes_value: true
+
+        - html-tmp-folder: 
+            short: h
+            long: tmp
+            value_name: TMP
+            help: where html page should be downloaded
+            default_value: download/tmp/
+            required: true
+            takes_value: true            
+
+        - dictionary: 
+            short: d
+            long: dictionary
+            value_name: DICTIONARY
+            help: Which dictionary should be used.
+            possible_values:
+                - cambridge
+                - collins
+                - oxford
+            default_value: cambridge
+            required: true
+            takes_value: true
+
+
+  - listen:      
+      about: Listen the pronunciation.
+      args:
+        - use-definition:
+            short: u
+            long: use-definition
+            value_name: DEFINITION
+            help: Score the input using any of the definitions.
+            takes_value: true
+            default_value: "false"
+            possible_values:
+              - "true"
+              - "false"
+         
+  - quiz:      
+      about: Test how good you are =:).      
+      args:    
+
+        - use-definition:
+            short: u
+            long: use-definition
+            value_name: DEFINITION
+            help: Score the input using any of the definitions.
+            takes_value: true
+            default_value: "false"
+            possible_values:
+              - "true"
+              - "false"
+
+        - hide-word:
+            short: h
+            long: hide
+            value_name: HIDE
+            help: Hide the word if it is found in definition
+            takes_value: true
+            default_value: "false"
+            possible_values:
+              - "true"
+              - "false"        

@@ -1,0 +1,16 @@
+[package]
+name = "http-srv"
+version = "1.0.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+
+[dependencies]
+common_libs = {path = "../common_libs"}
+mk_scraper = {path = "../mk-scraper"}
+serde = { version = "*" }
+tokio = {version = "*"}
+
+actix-web = { version = "4.3.1", features = ["openssl"] }
+actix-web-httpauth = "0.8.0"
+

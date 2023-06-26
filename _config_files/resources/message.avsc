@@ -1,0 +1,20 @@
+    {
+        "type": "record",
+        "name":"message",
+        "namespace": "ayagasha.messages",
+        "fields":[
+            {"name": "uuid", "type": "string"},
+            {"name": "from", "type": "ayagasha.messages.contact"},
+            {"name": "created_at", "type": "long", "logicalType": "timestamp-millis"},
+            {"name": "subject", "type": "string", "default": "None"},
+            {"name": "body", "type": "string", "default": "None"},
+            {"name": "recipients", "type": {"type":"array", "items": "ayagasha.messages.contact", "default":[]}},
+            {"name": "attachments",
+                "type": {
+                    "type":"array",
+                    "default": [],
+                    "items": "ayagasha.messages.attachment"
+                }
+            }
+        ]
+    }
