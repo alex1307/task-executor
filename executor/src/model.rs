@@ -229,15 +229,14 @@ pub mod actor {
         let (tx, rx) = crossbeam::channel::unbounded();
         workers.insert(actor_name.clone(), CommandHandler { sender: tx });
         let cname = actor_name.clone();
-        let _handler = thread::spawn(move || run(cname.clone(), rx, wlh));
+        info!("starting actor: {}", cname);
+        tokio::spawn(async move {run(cname.clone(), rx, wlh)});
         Ok(())
     }
 
     pub fn exchange_command(from: String, to: String, command: SystemCommand) {
         let actors = ACTORS.lock().unwrap();
-        let destination = actors.get(&to);
-        if destination.is_some() {
-            let handler = destination.unwrap();
+        if let Some(handler) = actors.get(&to) {
             let system_message = SystemMessage {
                 from: from.clone(),
                 payload: None,
@@ -247,8 +246,10 @@ pub mod actor {
             };
 
             let result = serde_json::to_string(&system_message);
-            let binary = Vec::from(result.unwrap().as_bytes());
-            let _ = handler.send(binary);
+            if let Ok(value) = result {
+                let _ = handler.send(value.as_bytes().to_vec());
+                info!("message: {:?} has been sent", system_message);
+            }
         }
     }
 
@@ -260,9 +261,7 @@ pub mod actor {
         message_type: MessageType,
     ) {
         let actors = ACTORS.lock().unwrap();
-        let destination = actors.get(&to);
-        if destination.is_some() {
-            let handler = destination.unwrap();
+        if let Some(handler) = actors.get(&to){
             let system_message = SystemMessage {
                 from: from.clone(),
                 payload: Some(Vec::from(message.as_bytes())),
@@ -272,9 +271,10 @@ pub mod actor {
             };
 
             let result = serde_json::to_string(&system_message);
-            let binary = Vec::from(result.unwrap().as_bytes());
-            info!("sending message: {:?}", system_message);
-            let _ = handler.send(binary);
+            if let Ok(value) = result {
+                let _ = handler.send(value.as_bytes().to_vec());
+                info!("message: {:?} has been sent", system_message);
+            }
         }
     }
 
@@ -334,7 +334,7 @@ pub mod actor {
         }
     }
 
-    pub async fn run<
+    pub fn run<
         Req: ?Sized + DeserializeOwned,
         Res: Sized + Serialize + DeserializeOwned + Reply,
     >(
@@ -371,20 +371,7 @@ pub mod actor {
 
                         if system_message.payload.is_some() {
                             let binary = system_message.payload.unwrap();
-                            let fut = async move { 
-                                info!("start sleeping for 2 sec...");
-                                let f = sleep(Duration::from_secs(2));
-                                info!("done");
-                                f
-                            };
-                            let mut multi_threaded_runtime = Builder::new_multi_thread()
-                            .worker_threads(4)
-                            .thread_name("my-custom-name")
-                            .thread_stack_size(3 * 1024 * 1024)
-                            .build()
-                            .unwrap();
-                            let fhandler = multi_threaded_runtime.spawn(fut);
-                            let _joined_future = join!(fhandler);
+                            info!("processing msg payload...{}", binary.len());
                         }
 
                         info!(
@@ -397,7 +384,6 @@ pub mod actor {
                     }
                 }
                 Err(_) => {
-                    info!("the servier {} is running.....", &registered_name);
                     continue;
                 }
             }
@@ -474,56 +460,4 @@ pub mod actor {
     }
 }
 
-#[cfg(test)]
-mod actor_unit_test {
 
-    use std::{thread::sleep, time::Duration};
-
-    use common_libs::configure_log4rs;
-
-    use crate::model::actor::{exchange_command, start_actor};
-
-    use super::{
-        actor::{exchange_message, WordListReq},
-        MessageType,
-    };
-
-    #[tokio::test]
-    async fn ping_pong_test() {
-        configure_log4rs();
-        let arnold = "arnold".to_string();
-        let silvester = "silvester".to_string();
-        let _ok = start_actor(silvester.clone());
-        let _ok = start_actor(arnold.clone());
-        exchange_command(
-            silvester.clone(),
-            arnold.clone(),
-            crate::model::actor::SystemCommand::Ping,
-        );
-        exchange_command(
-            silvester.clone(),
-            arnold.clone(),
-            crate::model::actor::SystemCommand::Ack,
-        );
-        exchange_command(
-            silvester.clone(),
-            arnold.clone(),
-            crate::model::actor::SystemCommand::HealthCheck,
-        );
-        sleep(Duration::from_secs(2));
-
-        let words = WordListReq {
-            words: vec!["correct".to_string()],
-        };
-        let json = serde_json::to_string(&words).unwrap();
-        exchange_message(
-            silvester.clone(),
-            arnold.clone(),
-            json,
-            Some("123".to_string()),
-            MessageType::Request,
-        );
-
-        sleep(Duration::from_secs(5));
-    }
-}

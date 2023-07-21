@@ -16,3 +16,8 @@ serde_json = { version = "*" }
 futures = {version = "*"}
 async-trait = {version = "*"}
 tokio = { version = "*", features = ["full"]}
+
+protobuf = "3.2.0"
+
+[dev-dependencies]
+protobuf-codegen-pure = "2.28.0" # Might be different by the time you read this

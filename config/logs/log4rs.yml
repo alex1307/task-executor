@@ -6,18 +6,13 @@ appenders:
   stdout:
     kind: console
     encoder:
-      pattern: "{h(==> {d} == {l} == - [thread({I}) {T}:{M}]:{L} - {m} {n} )}"
-
-  # An appender named "requests" that writes to a file with a custom pattern encoder
-  requests:
-    kind: file
-    path: "_log/requests.log"
-    encoder:
-      pattern: "{h(==> {d} == {l} == - [ thread({I}) {T}:{M}]:{L} - {m} {n} )}"
+      pattern: "{h({d(%Y-%m-%d %H:%M:%S%.3f)} {l} - [{T}:{M}]:{L} - {m} {n} )}"
 
   rolling-file-appender:
     kind: rolling_file
-    path: "_log/matkat-web.log"
+    path: "_log/dev_and_test.log"
+    encoder:
+      pattern: "{h({d(%Y-%m-%d %H:%M:%S%.3f)} {l} - [{T}:{M}]:{L} - {m} {n} )}"
     policy:
       # Identifies which policy is to be used. If no kind is specified, it will
       # default to "compound".
@@ -31,27 +26,25 @@ appenders:
         kind: fixed_window
         base: 1
         count: 5
-        pattern: "_log/matkat-web-logger.{}.log"
+        pattern: "_log/dev_and_test.{}.log"
+  
 
 # Set the default logging level to "warn" and attach the "stdout" appender to the root
 root:
   level: info
   appenders:
     - stdout
-#    - requests
     - rolling-file-appender
 
 loggers:
   # Raise the maximum log level for events sent to the "app::backend::db" logger to "info"
   app::backend::db:
     level: info
-  app::actix-rt:
-    level: info
-
+  
   # Route log events sent to the "app::requests" logger to the "requests" appender,
   # and *not* the normal appenders installed at the root
-  app::requests:
-    level: info
-    appenders:
-      - requests
-    additive: false
+  # app::requests:
+  #   level: info
+  #   appenders:
+  #     - requests
+  #   additive: false
